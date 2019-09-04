@@ -22,6 +22,6 @@ jobs:
     - uses: actions/download-artifact@master
       with:
         name: my-artifact
-        path: app/build/outputs/apk/debug
+        path: app/build/outputs/apk/debug/app-debug.apk
 
-    - run: cat app/build/outputs/apk/debug
+    - run: cat app/build/outputs/apk/debug/app-debug.apk
