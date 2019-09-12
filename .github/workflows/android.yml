@@ -24,19 +24,17 @@ jobs:
       - name: Grant execute permissions
         run: chmod +x gradlew
 
-      # cleanいらなそう
-      - name: Clean
-        run: ./gradlew clean
+      - name: Trigger Branch
+        run: echo ${GITHUB_REF} ${GITHUB_EVENT_NAME}
 
-      - name: Sample
-        run: echo ${GITHUB_REF} ${GITHUB_REPOSITORY}
-
+      # master以外すべて
       - name: Build Debug
-        if: github.ref != 'master'
+        if: contains(github.ref, 'refs/heads/master') == false
         run: ./gradlew assembleDebug
 
+      # masterのときだけ
       - name: Build Release
-        if: github.ref == 'master'
+        if: contains(github.ref, 'refs/heads/master')
         run: ./gradlew assembleRelease
 
       - name: Unit Test
