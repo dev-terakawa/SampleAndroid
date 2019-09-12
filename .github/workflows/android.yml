@@ -5,11 +5,7 @@ on:
     branches:
       - master
       - develop
-    paths:
-      - 'app/*'
   pull_request:
-    paths:
-      - 'app/*'
 
 jobs:
   android:
@@ -31,6 +27,9 @@ jobs:
       # cleanいらなそう
       - name: Clean
         run: ./gradlew clean
+
+      - name: Sample
+        run: echo ${GITHUB_REF} ${GITHUB_REPOSITORY}
 
       - name: Build Debug
         if: github.ref != 'master'
