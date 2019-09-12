@@ -32,6 +32,9 @@ jobs:
       - name: Clean
         run: ./gradlew clean
 
+      - name: Sample
+        run: echo github.ref
+
       - name: Build Debug
         if: github.ref != 'master'
         run: ./gradlew assembleDebug
