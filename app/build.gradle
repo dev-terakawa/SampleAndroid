@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin: 'org.sonarqube'
 
 android {
     compileSdkVersion 28
@@ -68,4 +69,18 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+}
+
+sonarqube {
+    properties {
+        property 'sonar.projectKey', "dev-terakawa_SampleAndroid"
+        property 'sonar.projectName', "SampleAndroid"
+        property 'sonar.organization' "dev-terakawa"
+        property 'sonar.login', "8ae2d744baae7635c852106a8631dd157f4f48f9"
+        property 'sonar.projectVersion', VERSION
+        property 'sonar.java.source', android.compileOptions.sourceCompatibility
+        property 'sonar.java.target', android.compileOptions.targetCompatibility
+        properties['sonar.sources'] = android.sourceSets.main.java.srcDirs
+        property 'sonar.host.url' "https://sonarcloud.io"
+    }
 }

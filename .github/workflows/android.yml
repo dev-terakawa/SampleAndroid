@@ -40,6 +40,9 @@ jobs:
       - name: Unit Test
         run: ./gradlew test
 
+      - name: SonarQube
+        run: ./gradlew sonarqube
+
       - name: Archive
         uses: actions/upload-artifact@master
         with:
