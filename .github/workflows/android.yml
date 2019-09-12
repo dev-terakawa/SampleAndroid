@@ -15,9 +15,11 @@ jobs:
           java-version: 1.8
       - name: Grant execute permissions
         run: chmod +x gradlew
-      - name: Build with Gradle
-        run: ./gradlew build
-      - name: Unit test with gradle
+      - name: Clean
+        run: ./gradlew clean
+      - name: Build
+        run: ./gradlew assembleDebug
+      - name: UT
         run: ./gradlew test
       - uses: actions/upload-artifact@master
         with:
