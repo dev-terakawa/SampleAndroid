@@ -37,9 +37,6 @@ jobs:
         if: contains(github.ref, 'refs/heads/master')
         run: ./gradlew assembleRelease
 
-      - name: Unit Test
-        run: ./gradlew test
-
       - name: SonarQube
         run: ./gradlew sonarqube
 
