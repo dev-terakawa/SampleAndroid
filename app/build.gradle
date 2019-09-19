@@ -76,6 +76,7 @@ sonarqube {
         property 'sonar.host.url', "https://sonarcloud.io"
         property 'sonar.organization', "dev-terakawa"
         property 'sonar.login', "8ae2d744baae7635c852106a8631dd157f4f48f9"
+        property 'sonar.github.oauth', "778851243685044870a3f6747325fa1b6e1bd10d"
         property 'sonar.projectKey', "dev-terakawa_SampleAndroid"
         property 'sonar.projectName', "SampleAndroid"
         property 'sonar.projectVersion', VERSION
