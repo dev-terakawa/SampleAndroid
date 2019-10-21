@@ -19,11 +19,11 @@ jobs:
       - name: whoami
         run: whoami
 
-      - name: pwd
-        run: pwd
-
       - name: ls
-        run: ls -la /home/runner/work/
+        run: ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
+
+      - name: AndroidHome
+        run: echo $ANDROID_HOME
 
       - name: Hello world action step
         id: hello
