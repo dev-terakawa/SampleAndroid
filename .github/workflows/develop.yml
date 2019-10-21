@@ -1,15 +1,13 @@
-name: Android CI
+name: Develop
 
 on:
   push:
     branches:
-      - master
       - develop
-  pull_request:
 
 jobs:
-  android:
-    name: Android App Build
+  develop:
+    name: Android Develop Build
     runs-on: ubuntu-18.04
 
     steps:
@@ -57,11 +55,6 @@ jobs:
       - name: Build Debug
         if: contains(github.ref, 'refs/heads/master') == false
         run: ./gradlew assembleDebug
-
-      # masterのときだけ
-      - name: Build Release
-        if: contains(github.ref, 'refs/heads/master')
-        run: ./gradlew assembleRelease
 
       - name: SonarQube
         run: ./gradlew sonarqube
