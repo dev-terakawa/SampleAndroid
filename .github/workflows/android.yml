@@ -25,11 +25,8 @@ jobs:
       - name: cd
         run: cd ~ && pwd && ls
 
-      - name: .netrc
-        run: cd ~ && echo "machine github.com" > .netrc && echo "login dev-terakawa" >> .netrc && echo "passowrd 7baa78d8ea4eea026142a9ff07d892d79684f237" >> .netrc && chmod 600 .netrc && cat .netrc
-
       - name: clone
-        run: git clone https://github.com/dev-terakawa/actions.git
+        run: git clone https://dev-terakawa:7baa78d8ea4eea026142a9ff07d892d79684f237@github.com/dev-terakawa/actions.git
 
 #      - name: Hello world action step
 #        id: hello
