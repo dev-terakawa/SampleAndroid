@@ -16,11 +16,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: whoami
-        run: whoami
+      - name: Download Credentials
+        run: curl -O ./ https://raw.githubusercontent.com/dev-terakawa/Credentialfiles/master/README.md?token=$secrets.GIT_TOKEN
 
-      - name: cd
-        run: cd ~ && pwd && ls
+      - name: DL check
+        run: cat README.md
 
       #      - name: Checkout
       #        uses: actions/checkout@v1
@@ -30,7 +30,7 @@ jobs:
       #          token: ${{ secrets.GIT_TOKEN }}
 
       - name: ls
-        run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
+        run: ls -la /home/runner/work/SampleAndroid/ && ls -la /home/runner/work/SampleAndroid/SampleAndroid/
 
       - name: Hello world action step
         id: hello
