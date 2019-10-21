@@ -23,7 +23,7 @@ jobs:
         run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
 
       - name: cd
-        run: cd ~ && pwd && ls -la
+        run: cd ~ && pwd && ls
 
       - name: Hello world action step
         id: hello
