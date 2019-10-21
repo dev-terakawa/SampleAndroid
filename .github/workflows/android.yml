@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Download Credentials
-        run: curl -O ./ https://raw.githubusercontent.com/dev-terakawa/Credentialfiles/master/README.md?token=$secrets.GIT_TOKEN
+        run: curl -O ./ https://raw.githubusercontent.com/dev-terakawa/Credentialfiles/master/README.md?token=${{ secrets.GIT_TOKEN }}
 
       - name: DL check
         run: cat README.md
