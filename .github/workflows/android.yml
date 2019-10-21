@@ -19,8 +19,8 @@ jobs:
       - name: Hello world action step
         id: hello
         uses: dev-terakawa/actions@master
-          with:
-            who-to-greet: 'Mona the Octocat'
+        with:
+          who-to-greet: 'Mona the Octocat'
 
       # Use the output from the `hello` step
       - name: Get the output time
