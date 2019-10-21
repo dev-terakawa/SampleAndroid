@@ -22,6 +22,9 @@ jobs:
       - name: pwd
         run: pwd
 
+      - name: ll
+        run: ll /home/runner/work/
+
       - name: Hello world action step
         id: hello
         uses: dev-terakawa/actions@master
