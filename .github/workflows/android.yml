@@ -22,6 +22,9 @@ jobs:
       - name: ls
         run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
 
+      - name: cd
+        run: cd ~ && pwd && ls -la
+
       - name: Hello world action step
         id: hello
         uses: dev-terakawa/actions@master
