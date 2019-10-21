@@ -28,7 +28,6 @@ jobs:
           repository: dev-terakawa/actions
           ref: master
           token: ${{ secrets.GIT_TOKEN }}
-          path: /home/runner/work/SampleAndroid/actions
 
       - name: ls
         run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
