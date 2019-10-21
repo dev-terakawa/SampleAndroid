@@ -16,6 +16,32 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: whoami
+        run: whoami
+
+      - name: cd
+        run: cd ~ && pwd && ls
+
+      #      - name: Checkout
+      #        uses: actions/checkout@v1
+      #        with:
+      #          repository: dev-terakawa/actions
+      #          ref: master
+      #          token: ${{ secrets.GIT_TOKEN }}
+
+      - name: ls
+        run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
+
+      - name: Hello world action step
+        id: hello
+        uses: dev-terakawa/actions@master
+        with:
+          who-to-greet: 'Mona the Octocat'
+
+      # Use the output from the `hello` step
+      - name: Get the output time
+        run: echo "The time was ${{ steps.hello.outputs.time }}"
+
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
         with:
