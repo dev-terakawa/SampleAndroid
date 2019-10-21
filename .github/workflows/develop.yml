@@ -1,26 +1,24 @@
-name: Android CI
+name: Develop
 
 on:
   push:
     branches:
-      - master
       - develop
-  pull_request:
 
 jobs:
-  android:
-    name: Android App Build
-    runs-on: ubuntu-16.04
+  develop:
+    name: Android Develop Build
+    runs-on: ubuntu-18.04
 
     steps:
       - name: Checkout
         uses: actions/checkout@v1
 
-      - name: whoami
-        run: whoami
+      - name: Download Credentials
+        run: 'curl -H "Authorization: token ${{ secrets.GIT_TOKEN }}" -O https://raw.githubusercontent.com/dev-terakawa/Credentialfiles/master/README.md'
 
-      - name: cd
-        run: cd ~ && pwd && ls
+      - name: DL check
+        run: cat README.md
 
       #      - name: Checkout
       #        uses: actions/checkout@v1
@@ -30,7 +28,7 @@ jobs:
       #          token: ${{ secrets.GIT_TOKEN }}
 
       - name: ls
-        run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
+        run: ls -la /home/runner/work/SampleAndroid/ && ls -la /home/runner/work/SampleAndroid/SampleAndroid/
 
       - name: Hello world action step
         id: hello
@@ -51,17 +49,12 @@ jobs:
         run: chmod +x gradlew
 
       - name: Trigger Branch
-        run: echo ${GITHUB_REF} ${GITHUB_EVENT_NAME}
+        run: echo ${GITHUB_REF} ${GITHUB_EVENT_NAME} ${HOME} ${GITHUB_ACTION}
 
       # master以外すべて
       - name: Build Debug
         if: contains(github.ref, 'refs/heads/master') == false
         run: ./gradlew assembleDebug
-
-      # masterのときだけ
-      - name: Build Release
-        if: contains(github.ref, 'refs/heads/master')
-        run: ./gradlew assembleRelease
 
       - name: SonarQube
         run: ./gradlew sonarqube
