@@ -22,8 +22,8 @@ jobs:
       - name: pwd
         run: pwd
 
-      - name: ll
-        run: ll /home/runner/work/
+      - name: ls
+        run: ls -la /home/runner/work/
 
       - name: Hello world action step
         id: hello
