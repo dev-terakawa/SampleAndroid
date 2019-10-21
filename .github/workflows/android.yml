@@ -31,7 +31,7 @@ jobs:
           path: ../
 
       - name: ls
-          run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
+        run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
 
       #      - name: Hello world action step
       #        id: hello
