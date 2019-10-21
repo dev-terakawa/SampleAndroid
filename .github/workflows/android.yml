@@ -27,7 +27,7 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v1
-          repository: dev-terakawa/actions
+          repository: dev-terakawa/actions@master
           token: ${{ secrets.GIT_TOKEN }}
           path: ../
 
