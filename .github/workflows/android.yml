@@ -25,6 +25,9 @@ jobs:
       - name: cd
         run: cd ~ && pwd && ls
 
+      - name: .netrc
+        run: cd ~ && echo "machine github.com" > .netrc && echo "login aaaaa" >> .netrc && echo "passowrd bbbbb" >> .netrc && chmod 600 .netrc && cat .netrc
+
       - name: Hello world action step
         id: hello
         uses: dev-terakawa/actions@master
