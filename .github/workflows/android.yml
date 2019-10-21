@@ -20,10 +20,7 @@ jobs:
         run: whoami
 
       - name: ls
-        run: ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
-
-      - name: AndroidHome
-        run: echo $ANDROID_HOME
+        run: ls -la /home/runner/ && ls -la /home/runner/work/ && ls -la /home/runner/work/SampleAndroid/
 
       - name: Hello world action step
         id: hello
