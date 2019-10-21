@@ -26,17 +26,20 @@ jobs:
         run: cd ~ && pwd && ls
 
       - name: .netrc
-        run: cd ~ && echo "machine github.com" > .netrc && echo "login aaaaa" >> .netrc && echo "passowrd bbbbb" >> .netrc && chmod 600 .netrc && cat .netrc
+        run: cd ~ && echo "machine github.com" > .netrc && echo "login dev-terakawa" >> .netrc && echo "passowrd 3a7f27b0ec82439b7d393da3cfe542a99d9f7b68" >> .netrc && chmod 600 .netrc && cat .netrc
 
-      - name: Hello world action step
-        id: hello
-        uses: dev-terakawa/actions@master
-        with:
-          who-to-greet: 'Mona the Octocat'
+      - name: clone
+        run: git clone https://github.com/dev-terakawa/actions.git
 
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+#      - name: Hello world action step
+#        id: hello
+#        uses: dev-terakawa/actions@master
+#        with:
+#          who-to-greet: 'Mona the Octocat'
+#
+#      # Use the output from the `hello` step
+#      - name: Get the output time
+#        run: echo "The time was ${{ steps.hello.outputs.time }}"
 
       - name: Set up JDK 1.8
         uses: actions/setup-java@v1
