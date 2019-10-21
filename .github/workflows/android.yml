@@ -17,8 +17,8 @@ jobs:
         uses: actions/checkout@v1
 
       - name: Hello world action step
-#          id: hello
-          uses: dev-terakawa/actions@master
+        id: hello
+        uses: dev-terakawa/actions@master
           with:
             who-to-greet: 'Mona the Octocat'
 
