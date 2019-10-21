@@ -10,7 +10,7 @@ on:
 jobs:
   android:
     name: Android App Build
-    runs-on: ubuntu-16.04
+    runs-on: ubuntu-18.04
 
     steps:
       - name: Checkout
@@ -51,7 +51,7 @@ jobs:
         run: chmod +x gradlew
 
       - name: Trigger Branch
-        run: echo ${GITHUB_REF} ${GITHUB_EVENT_NAME}
+        run: echo ${GITHUB_REF} ${GITHUB_EVENT_NAME} ${HOME} ${GITHUB_ACTION}
 
       # master以外すべて
       - name: Build Debug
