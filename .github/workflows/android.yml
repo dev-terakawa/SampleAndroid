@@ -25,8 +25,11 @@ jobs:
       - name: cd
         run: cd ~ && pwd && ls
 
-      - name: clone
-        run: git clone https://dev-terakawa:7baa78d8ea4eea026142a9ff07d892d79684f237@github.com/dev-terakawa/actions.git
+      - name: Checkout
+        uses: actions/checkout@v1
+          repository: dev-terakawa/actions
+          token: ${{ secrets.GIT_TOKEN }}
+          path: ../
 
 #      - name: Hello world action step
 #        id: hello
