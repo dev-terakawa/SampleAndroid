@@ -16,6 +16,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v1
 
+      - name: whoami
+        run: whoami
+
+      - name: pwd
+        run: pwd
+
       - name: Hello world action step
         id: hello
         uses: dev-terakawa/actions@master
