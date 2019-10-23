@@ -56,6 +56,9 @@ jobs:
         if: contains(github.ref, 'refs/heads/master') == false
         run: ./gradlew assembleDebug
 
+      - name: ls
+        run: ls -la ~/
+
       - name: SonarQube
         run: ./gradlew sonarqube
         env:
