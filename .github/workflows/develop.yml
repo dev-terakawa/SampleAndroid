@@ -7,7 +7,7 @@ on:
 
 jobs:
   develop:
-    name: Android Develop Build ${{ matrix.os }}
+    name: Develop Build ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -30,8 +30,8 @@ jobs:
       #          ref: master
       #          token: ${{ secrets.GIT_TOKEN }}
 
-      - name: ls
-        run: ls -la /home/runner/work/SampleAndroid/ && ls -la /home/runner/work/SampleAndroid/SampleAndroid/
+#      - name: ls
+#        run: ls -la /home/runner/work/SampleAndroid/ && ls -la /home/runner/work/SampleAndroid/SampleAndroid/
 
       - name: Hello world action step
         id: hello
