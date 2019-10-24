@@ -32,6 +32,8 @@ jobs:
 
 #      - name: ls
 #        run: ls -la /home/runner/work/SampleAndroid/ && ls -la /home/runner/work/SampleAndroid/SampleAndroid/
+      - name: matrix
+        run: echo ${{ matrix.os }}
 
       - name: Hello world action step
         id: hello
