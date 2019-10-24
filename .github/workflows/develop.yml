@@ -37,7 +37,7 @@ jobs:
         run: echo "::set-env name=PWD::$(pwd)"
 
       - name: ls
-        run: ls -la ${PWD} && ls -la ${PWD}/SampleAndroid/
+        run: "ls -la ${PWD} && ls -la ${PWD}/SampleAndroid/"
 
       - name: Hello world action step
         id: hello
