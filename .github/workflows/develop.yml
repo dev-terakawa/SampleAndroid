@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: machine
         run: echo ${{ matrix.os }}
-        
+
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
