@@ -2,6 +2,7 @@ package com.sample.android;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 //TODO
 public class MainActivity extends AppCompatActivity {
