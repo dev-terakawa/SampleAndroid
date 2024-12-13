@@ -7,10 +7,41 @@ on:
 
 jobs:
   develop:
-    name: Android Develop Build
-    runs-on: ubuntu-18.04
+    name: Develop Build ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-18.04, macOS-10.14]
 
     steps:
+      - name: machine
+        run: echo ${{ matrix.os }}
+
+      - name: Dump GitHub context
+        env:
+          GITHUB_CONTEXT: ${{ toJson(github) }}
+        run: echo "$GITHUB_CONTEXT"
+      - name: Dump job context
+        env:
+          JOB_CONTEXT: ${{ toJson(job) }}
+        run: echo "$JOB_CONTEXT"
+      - name: Dump steps context
+        env:
+          STEPS_CONTEXT: ${{ toJson(steps) }}
+        run: echo "$STEPS_CONTEXT"
+      - name: Dump runner context
+        env:
+          RUNNER_CONTEXT: ${{ toJson(runner) }}
+        run: echo "$RUNNER_CONTEXT"
+      - name: Dump strategy context
+        env:
+          STRATEGY_CONTEXT: ${{ toJson(strategy) }}
+        run: echo "$STRATEGY_CONTEXT"
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJson(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+
       - name: Checkout
         uses: actions/checkout@v1
 
@@ -27,12 +58,15 @@ jobs:
       #          ref: master
       #          token: ${{ secrets.GIT_TOKEN }}
 
+      - name: current dir
+        run: echo "::set-env name=PWD::$(pwd)"
+
       - name: ls
-        run: ls -la /home/runner/work/SampleAndroid/ && ls -la /home/runner/work/SampleAndroid/SampleAndroid/
+        run: "ls -la ${PWD}"
 
       - name: Hello world action step
         id: hello
-        uses: dev-terakawa/actions/docker@master
+        uses: dev-terakawa/actions/js@master
         with:
           who-to-greet: 'Mona the Octocat'
 
@@ -55,6 +89,9 @@ jobs:
       - name: Build Debug
         if: contains(github.ref, 'refs/heads/master') == false
         run: ./gradlew assembleDebug
+
+      - name: check .android
+        run: ls -la ~/
 
       - name: SonarQube
         run: ./gradlew sonarqube
