@@ -1,20 +1,26 @@
 buildscript {
+    ext.kotlinVersion = "1.8.0"
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.5.1'
-        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.8'
+        classpath 'com.android.tools.build:gradle:8.7.3'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+        classpath 'org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:5.1.0.4882'
     }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        gradlePluginPortal()
     }
-    tasks.withType(JavaCompile) {
-        options.encoding = 'UTF-8'
+    tasks.withType(JavaCompile).tap {
+        configureEach {
+            options.encoding = 'UTF-8'
+        }
     }
 }
