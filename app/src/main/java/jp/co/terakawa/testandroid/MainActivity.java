@@ -1,4 +1,4 @@
-package com.sample.android;
+package jp.co.terakawa.testandroid;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
