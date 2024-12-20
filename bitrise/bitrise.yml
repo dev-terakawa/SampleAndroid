@@ -1,0 +1,171 @@
+---
+format_version: '8'
+default_step_lib_source: https://github.com/bitrise-io/bitrise-steplib.git
+project_type: android
+trigger_map:
+  - pull_request_source_branch: "*"
+    type: pull_request
+    workflow: debug
+  - push_branch: release
+    type: push
+    workflow: release
+  - push_branch: master
+    type: push
+    workflow: release
+  - push_branch: develop
+    type: push
+    workflow: debug
+workflows:
+  release:
+    steps:
+      - set-java-version@1:
+          inputs:
+            - set_java_version: '17'
+      - git-clone:
+          inputs:
+            - sparse_directories:
+            - merge_pr: 'no'
+      - restore-gradle-cache@2: {}
+      - script:
+          title: Do anything with Script step
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                
+                printenv | sort
+      - install-missing-android-tools: {}
+      - gradle-runner:
+          inputs:
+            - gradle_task: assembleRelease bundleRelease
+      - save-gradle-cache@1: {}
+      - deploy-to-bitrise-io:
+          inputs:
+            - notify_user_groups: none
+      - script:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                
+                # write your script here
+                echo "Hello World!"
+                whoami
+                
+                # or run a script from your repository, like:
+                # bash ./path/to/script.sh
+                # not just bash, e.g.:
+                # ruby ./path/to/script.rb
+      - cache-push: {}
+  debug:
+    steps:
+      - set-java-version@1:
+          inputs:
+            - set_java_version: '17'
+      - git-clone:
+          inputs:
+            - sparse_directories:
+            - merge_pr: 'no'
+      - restore-gradle-cache@2: {}
+      - script:
+          title: Do anything with Script step
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                
+                printenv | sort
+      - install-missing-android-tools: {}
+      - gradle-runner:
+          inputs:
+            - gradle_task: assembleDebug
+      - save-gradle-cache@1: {}
+      - deploy-to-bitrise-io:
+          inputs:
+            - notify_user_groups: none
+      - script:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                
+                # write your script here
+                echo "Hello World!"
+                whoami
+                
+                # or run a script from your repository, like:
+                # bash ./path/to/script.sh
+                # not just bash, e.g.:
+                # ruby ./path/to/script.rb
+      - cache-push: {}
+  master:
+    steps:
+      - set-java-version@1:
+          inputs:
+            - set_java_version: '17'
+      - git-clone:
+          inputs:
+            - sparse_directories:
+            - merge_pr: 'no'
+      - restore-gradle-cache@2: {}
+      - script:
+          title: Do anything with Script step
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                
+                printenv | sort
+      - install-missing-android-tools: {}
+      - gradle-runner:
+          inputs:
+            - gradle_task: assembleRelease
+      - save-gradle-cache@1: {}
+      - deploy-to-bitrise-io:
+          inputs:
+            - notify_user_groups: none
+      - script:
+          inputs:
+            - content: |-
+                #!/usr/bin/env bash
+                # fail if any commands fails
+                set -e
+                # debug log
+                set -x
+                
+                # write your script here
+                echo "Hello World!"
+                whoami
+                
+                # or run a script from your repository, like:
+                # bash ./path/to/script.sh
+                # not just bash, e.g.:
+                # ruby ./path/to/script.rb
+      - cache-push: {}
+app:
+  envs:
+    - opts:
+        is_expand: false
+      GRADLE_BUILD_FILE_PATH: build.gradle
+    - opts:
+        is_expand: false
+      GRADLEW_PATH: "./gradlew"
+meta:
+  bitrise.io:
+    stack: linux-docker-android-22.04
+    machine_type_id: standard
